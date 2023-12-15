@@ -1,7 +1,6 @@
 from typing import Optional
 
 
-# from pythonProject.grind169 import ListNode
 class ListNode:
     def __init__(self, val=0, next=None):
         self.val = val
@@ -14,21 +13,19 @@ def mergeTwoLists(list1: Optional[ListNode], list2: Optional[ListNode]) -> Optio
     while list1 and list2:
         if list1.val < list2.val:
             cur.next = list1
-            list1, cur = list1.next, list1
+            list1 = list1.next
         else:
             cur.next = list2
-            list2, cur = list2.next, list2
+            list2 = list2.next
+        cur = cur.next
 
-    if list1 or list2:
-        cur.next = list1 if list1 else list2
+    cur.next = list1 or list2
 
     return dummy.next
 
 
-# 打印链表
 def print_linked_list(head):
-    values = []  # 用于存储节点的值
-    current = head
+    values = []
     while current:
         values.append(current.val)
         current = current.next
@@ -44,4 +41,6 @@ if __name__ == '__main__':
     list2.next.next = ListNode(4)
 
     result = mergeTwoLists(list1, list2)
-    print_linked_list(result)
+    while result is not None:
+        print(result.val)
+        result = result.next

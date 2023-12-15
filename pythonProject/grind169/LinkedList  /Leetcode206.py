@@ -17,30 +17,32 @@ class Solution:
 
     prev=None
     1.
-    nxt = current   => nxt = 2345 curr =12345
-    curr.next =prev => curr.next =None / curr = 1,None
-    prev = curr     => prev = 1,None
-    curr = nxt      => curr = 2345
+    nxt = head.next => nxt = 2345 head =12345
+    head.next =prev => head.next =None / head = 1,None
+    prev = head     => prev = 1,None
+    head = nxt      => head = 2345
     2.
-    nxt = current   => nxt = 345 curr =2345
-    curr.next =prev => curr.next =1,None / curr = 2,1,None
-    prev = curr     => prev = 2,1,None
-    curr = nxt      => curr = 345
+    nxt = head.next => nxt = 345 head =2345
+    head.next =prev => head.next =1,None / head = 2,1,None
+    prev = head     => prev = 2,1,None
+    head = nxt      => head = 345
     3.
-    nxt = current   => nxt = 45 curr =345
-    curr.next =prev => curr.next =2,1,None / curr = 3,2,1,None
-    prev = curr     => prev = 3,2,1,None
-    curr = nxt      => curr = 45
+    nxt = head.next => nxt = 45 head =345
+    head.next =prev => head.next =2,1,None / head = 3,2,1,None
+    prev = head     => prev = 3,2,1,None
+    head = nxt      => head = 45
     以此類推
     '''
     def reverseList(self, head: Optional[ListNode]) -> Optional[ListNode]:
         prev = None
-        curr =head
-        while curr:
-            nxt = curr.next
-            curr.next = prev
-            prev = curr
-            curr = nxt
+        while head:
+            next_node = head.next
+            # 將向後指針轉向指向前,1->0,2->1->0
+            head.next = prev
+            # 更新完指針後將prev更新為head
+            prev = head
+            # 將指針移位
+            head = next_node
         return prev
 
     # recursive

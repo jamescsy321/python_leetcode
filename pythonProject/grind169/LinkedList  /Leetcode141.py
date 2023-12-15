@@ -2,7 +2,7 @@ from typing import Optional
 
 
 # 141. Linked List Cycle
-# fast and slow pointer 如果有循環總有一天會碰到
+# fast and slow pointer 使用快慢指針，如果有循環總有一天會碰到
 # Linked List
 
 class ListNode:
